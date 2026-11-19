@@ -1,0 +1,9 @@
+/storage/mail-settings.json
+/storage/mail-settings.json.*
+/storage/ui-review/
+/storage/*
+!/storage/.htaccess
+/output/
+/.env
+/.env.*
+!/.env.example

@@ -1,0 +1,39 @@
+.registration-page .split-left{width:38%;min-width:320px;position:sticky;top:0;height:100dvh;justify-content:center;padding:56px clamp(28px,4vw,68px)}
+.registration-page .split-left h1{font-size:clamp(34px,3.5vw,52px);margin-bottom:20px}
+.registration-page .split-left>p{font-size:15px;line-height:1.8;color:#d1dfd4;margin-bottom:36px}
+.registration-page .steps{gap:24px}.registration-page .step-num{background:#ffffff12;border-color:#ffffff30;color:#e4cc95}
+.registration-page .step-text strong{font-size:14px}.registration-page .step-text span{font-size:12px;color:#c1d2c6}
+.registration-page .left-footer{margin-top:48px;padding-top:24px;border-top:1px solid #ffffff20;color:#c1d2c6}
+.registration-page .split-right{padding:40px 32px;align-items:flex-start;min-width:0}
+.registration-page .reg-box{max-width:680px;width:100%;padding:36px;border-radius:20px;margin:auto;}
+.registration-kicker{font-size:10px;letter-spacing:1.8px;font-weight:700;color:var(--primary);margin-bottom:10px}
+.registration-page .reg-box h2{font-size:30px;margin-bottom:8px}.registration-page .reg-box .sub{font-size:13px;line-height:1.7;margin-bottom:22px}
+.registration-notice{display:flex;gap:12px;padding:16px;background:#edf4ec;border:1px solid #d7e5d6;border-radius:12px;margin-bottom:24px;color:#2d5944}
+.registration-notice>i{margin-top:4px;font-size:18px}.registration-notice strong{font-size:13px}.registration-notice p{font-size:12px;line-height:1.6;margin:4px 0 0}
+.registration-page .section-label{display:flex;align-items:center;gap:10px;margin:24px 0 18px;font-size:11px;letter-spacing:1px}
+.section-number{display:inline-flex;align-items:center;justify-content:center;width:27px;height:27px;border-radius:8px;background:#edf2e9;color:var(--primary);letter-spacing:0}
+.registration-page .form-row{gap:18px}.registration-page .form-group{margin-bottom:18px}.registration-page .form-group label{font-size:12px;margin-bottom:7px}
+.registration-page .input-wrap input{min-height:46px;font-size:13px;padding-right:42px}
+.field-help{font-size:11px;color:var(--text-muted);line-height:1.6;margin:6px 0 0}
+.password-toggle{position:absolute;right:5px;top:50%;transform:translateY(-50%);height:36px;width:36px;background:transparent;border:0;border-radius:6px;color:#64756c;cursor:pointer}
+.password-toggle:hover{background:#edf2e9}.password-toggle:focus-visible{outline:2px solid var(--primary);outline-offset:1px}
+.password-requirements{background:#f5f7f1;border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin:0 0 20px}
+.password-requirements strong{font-size:12px}.password-requirements ul{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;list-style:none;padding:0;margin:10px 0 0}
+.password-requirements li{font-size:11px;color:var(--text-muted);display:flex;align-items:center;gap:7px}.password-requirements li:before{content:'○';font-size:14px}.password-requirements li.met{color:#256447}.password-requirements li.met:before{content:'✓'}
+.registration-footnote{font-size:11px;line-height:1.7;color:var(--text-muted);margin-bottom:14px}.registration-footnote i{margin-right:4px}
+.registration-page .btn-register{min-height:48px}.registration-page .links{flex-wrap:wrap;gap:12px 24px}.registration-page .links a{font-size:12px}
+@media(max-width:1000px){.registration-page .split-left{width:34%;min-width:280px;padding:40px 28px}.registration-page .split-right{padding:28px 20px}.registration-page .reg-box{padding:28px}}
+@media(max-width:820px){.registration-page .split-left{position:static;width:100%;height:auto;min-width:0;padding:28px}.registration-page .split-left h1{font-size:30px}.registration-page .split-left>p{margin-bottom:0;font-size:13px}.registration-page .split-right{padding:20px 16px}.registration-page .reg-box{padding:24px}.registration-page .form-row{grid-template-columns:1fr;gap:0}}
+@media(max-width:420px){.password-requirements ul{grid-template-columns:1fr}.registration-page .reg-box{padding:20px}.registration-page .reg-box h2{font-size:26px}}
+/* Refined registration layout and clearer form feedback. */
+.registration-page .registration-home{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:#e4cc95;margin-bottom:26px;text-decoration:none}
+.registration-page .registration-home:hover{text-decoration:underline}
+.registration-page .registration-home:focus-visible{outline:2px solid #e4cc95;outline-offset:5px}
+.registration-page .input-wrap input:focus{box-shadow:0 0 0 4px #28634f16;border-color:#537d60}
+.registration-page .input-wrap input.valid{border-color:#528568;background:#f7fbf5}
+.registration-page .input-wrap input.invalid{border-color:#b85742;background:#fffaf8}
+.registration-page .reg-box{box-shadow:0 20px 65px #193c3210}
+.registration-page .btn-register{font-size:14px;letter-spacing:.1px}
+.registration-page #contact{font-variant-numeric:tabular-nums;letter-spacing:.5px}
+.registration-page .registration-notice{border-left:3px solid #528568}
+@media(max-width:820px){.registration-page .registration-home{margin-bottom:18px}.registration-page .split-left .steps{display:none}.registration-page .split-left .left-footer{display:none}}

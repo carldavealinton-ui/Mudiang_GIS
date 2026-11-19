@@ -1,0 +1,51 @@
+/* Resident report workspace: details on the left, conversation on the right. */
+.conversation-page .thread-content{max-width:1600px;margin-inline:auto;width:100%}
+.conversation-page .thread-layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,1fr);gap:24px;align-items:start}
+.conversation-page .thread-context{position:static;min-width:0;padding:28px;background:var(--card-bg,#fffefa);border:1px solid var(--border);border-radius:16px;box-shadow:0 4px 20px #183f3806}
+.conversation-page .thread-context>h2{font-size:26px;line-height:1.3;margin:8px 0 16px}
+.conversation-page .thread-tags{padding-bottom:20px;margin-bottom:24px;border-bottom:1px solid var(--border)}
+.conversation-page .thread-context dl{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px 18px;margin:0 0 24px}
+.conversation-page .thread-context dt{font-size:10px;line-height:1.7;color:var(--text-muted);letter-spacing:.6px;margin:0;padding-top:2px}
+.conversation-page .thread-context dd{font-size:13px;color:var(--text);line-height:1.75;margin:0;max-height:none;overflow:visible}
+.conversation-page .thread-context .workflow-timeline{margin-top:24px}
+.conversation-page .workflow-stages{gap:6px}.conversation-page .workflow-stages li{font-size:10px;padding:12px 4px;overflow-wrap:anywhere}
+.conversation-page .thread-context-note{padding-top:18px;margin-top:24px}.conversation-page .thread-context-note p{margin:0;font-size:11px;color:var(--text-muted)}
+.conversation-page .report-messages{position:sticky;top:112px;min-width:0}
+.conversation-page .report-messages .conversation-card{margin:0;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 6px 24px #183f3808}
+.conversation-page .conversation-header{padding:22px;background:var(--card-bg,#fffefa)}
+.conversation-page .conversation-header h2{font-size:18px!important;line-height:1.35}.conversation-page .conversation-header p{margin:0;line-height:1.6;font-size:12px}
+.conversation-page .conversation-service{padding:12px 20px;font-size:10px;line-height:1.6}
+.conversation-page .conversation-timeline{height:clamp(300px,43vh,460px);padding:22px 18px;background:#f5f7f0}
+.conversation-page .conversation-empty{min-height:260px;padding:24px 18px}.conversation-page .conversation-empty p{font-size:12px}
+.conversation-page .conversation-composer{padding:18px 20px;background:var(--card-bg,#fffefa)}
+.conversation-page .conversation-composer textarea{min-height:90px;font-size:13px;border-radius:10px}
+.conversation-page .conversation-compose-footer{gap:12px;flex-wrap:wrap}
+.conversation-page .message-bubble{box-shadow:none}.conversation-page .message-content{max-width:85%}
+@media(min-width:1600px){.conversation-page .thread-layout{grid-template-columns:minmax(0,1.15fr) minmax(400px,1fr)}}
+@media(max-width:1100px){.conversation-page .thread-layout{grid-template-columns:minmax(0,1fr)}.conversation-page .report-messages{position:static}.conversation-page .thread-context{padding:24px}.conversation-page .conversation-timeline{height:380px}}
+@media(max-width:600px){.conversation-page .thread-layout{gap:18px}.conversation-page .thread-context{padding:20px}.conversation-page .thread-context>h2{font-size:23px}.conversation-page .thread-context dl{grid-template-columns:1fr;gap:5px}.conversation-page .thread-context dd{margin-bottom:14px}.conversation-page .conversation-header{padding:18px 16px}.conversation-page .conversation-service{padding:10px 16px}.conversation-page .conversation-composer{padding:16px}.conversation-page .conversation-timeline{padding:18px 14px;height:350px}.conversation-page .workflow-stages{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media print{.conversation-page .thread-layout{display:block}.conversation-page .report-messages{position:static;margin-top:24px}.conversation-page .conversation-timeline{height:auto;overflow:visible}}
+/* Read-only report tracking uses the full workspace without a message column. */
+.report-tracking-page .tracking-navigation{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:24px;padding:10px;background:var(--card-bg,#fffefa);border:1px solid var(--border);border-radius:14px}
+.tracking-navigation a{display:inline-flex;align-items:center;gap:8px;padding:11px 14px;border-radius:9px;color:var(--text);text-decoration:none;font-size:12px;font-weight:600;transition:background .15s,color .15s}
+.tracking-navigation a:hover,.tracking-navigation a:focus-visible{background:var(--primary,#235c45);color:#fff}
+.tracking-navigation>span{margin-left:auto;padding:0 12px;font-size:11px;color:var(--text-muted)}
+.report-tracking-page :is(#report-details,#report-progress,#conversation){scroll-margin-top:120px}
+.report-tracking-page .thread-context{border-top:4px solid var(--primary,#235c45)}
+.report-tracking-page .thread-tags{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.report-tracking-page .thread-context dd,.report-tracking-page .message-bubble{overflow-wrap:anywhere}
+.report-tracking-page .thread-evidence summary{padding:14px;border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:12px;font-weight:600}
+.report-tracking-page .thread-evidence[open] summary{margin-bottom:14px;background:#eef3e9}
+.report-tracking-page .conversation-composer textarea:focus{outline:2px solid var(--primary,#235c45);outline-offset:2px}
+.report-tracking-page .tracking-message-note{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;font-size:11px;line-height:1.7;color:var(--text-muted);margin:14px 6px}
+.report-tracking-page a:focus-visible,.report-tracking-page summary:focus-visible{outline:2px solid var(--primary,#235c45);outline-offset:3px}
+@media(max-width:600px){.report-tracking-page .topbar-right{display:flex;flex-wrap:wrap;gap:8px}.tracking-navigation a{flex:1;justify-content:center;padding:10px 8px;font-size:11px}.tracking-navigation>span{display:none}.report-tracking-page .conversation-header{align-items:flex-start}.report-tracking-page .conversation-compose-footer .btn{min-height:44px}.report-tracking-page .thread-content{padding-inline:16px}}
+@media(prefers-reduced-motion:no-preference){html:has(.report-tracking-page){scroll-behavior:smooth}}
+@media print{.tracking-navigation,.tracking-message-note,.report-tracking-page .conversation-composer,.report-tracking-page .topbar-right{display:none!important}}
+.report-view-page .thread-content{max-width:1180px}
+.report-view-page .thread-layout{grid-template-columns:minmax(0,1fr)}
+.report-view-page .thread-context{padding:30px}
+.report-view-page .thread-context dl{grid-template-columns:150px minmax(0,1fr)}
+.report-view-page .thread-evidence .evidence-gallery{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.report-view-page .workflow-stages li{font-size:12px;padding:14px 8px}
+@media(max-width:600px){.report-view-page .thread-context{padding:20px}.report-view-page .thread-context dl{grid-template-columns:1fr}.report-view-page .workflow-stages li{font-size:11px}}
