@@ -4,10 +4,16 @@ $dbname = getenv('DB_NAME') ?: 'barangay_gis';
 $username = getenv('DB_USER') ?: 'root';
 $password = getenv('DB_PASSWORD') ?: '';
 $port = getenv('DB_PORT') ?: '3306';
+$sslCa = getenv('DB_SSL_CA');
+
+$pdoOptions = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
+if ($sslCa !== false && $sslCa !== '') {
+    $pdoOptions[PDO::MYSQL_ATTR_SSL_CA] = $sslCa;
+    $pdoOptions[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = true;
+}
 
 try {
-    $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4", $username, $password, $pdoOptions);
 } catch(PDOException $e) {
     die("Connection failed: " . $e->getMessage());
 }

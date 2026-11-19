@@ -70,21 +70,9 @@ WHERE username = 'admin'
   AND (full_name IS NULL OR full_name = 'User');
 
 
--- Add user_id column to complaints (if not yet exists)
-ALTER TABLE complaints
-ADD COLUMN IF NOT EXISTS user_id INT NULL AFTER id;
-
--- Re‑create foreign key constraint safely
-SET FOREIGN_KEY_CHECKS = 0;
-
-ALTER TABLE complaints
-DROP FOREIGN KEY IF EXISTS complaints_ibfk_1;
-
-ALTER TABLE complaints
-ADD CONSTRAINT complaints_ibfk_1
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL;
-
-SET FOREIGN_KEY_CHECKS = 1;
+-- user_id and its foreign key are defined in the complaints table above.
+-- Keep the constraint there instead of dropping and recreating it here;
+-- TiDB does not support DROP FOREIGN KEY IF EXISTS.
 
 
 -- Optional: add indexes for performance
@@ -95,7 +83,9 @@ ALTER TABLE users ADD INDEX IF NOT EXISTS idx_username (username);
 
 -- Email verification columns
 ALTER TABLE users
-ADD COLUMN IF NOT EXISTS email_verified TINYINT(1) NOT NULL DEFAULT 0 AFTER email,
+ADD COLUMN IF NOT EXISTS email_verified TINYINT(1) NOT NULL DEFAULT 0 AFTER email;
+
+ALTER TABLE users
 ADD COLUMN IF NOT EXISTS verification_token VARCHAR(64) NULL AFTER email_verified;
 
 -- Mark existing admin as already verified
@@ -150,7 +140,6 @@ CREATE TABLE IF NOT EXISTS complaint_message_reads (
 ALTER TABLE notifications ADD COLUMN IF NOT EXISTS event_type VARCHAR(20) NOT NULL DEFAULT 'complaint';
 ALTER TABLE notifications ADD COLUMN IF NOT EXISTS complaint_message_id BIGINT UNSIGNED NULL;
 ALTER TABLE complaint_messages ADD COLUMN IF NOT EXISTS client_token VARCHAR(64) NULL;
-ALTER TABLE complaint_messages ADD UNIQUE INDEX IF NOT EXISTS idx_sender_token (user_id, client_token);
 ALTER TABLE complaint_messages ADD INDEX IF NOT EXISTS idx_complaint_messages (complaint_id, id);
 
 -- Report workflow and attributed history
