@@ -13,7 +13,8 @@ function complaintInbox(PDO $pdo, int $userId, bool $isStaff, string $search, bo
         (SELECT COUNT(*) FROM complaint_messages um WHERE um.complaint_id=c.id AND um.user_id<>? AND um.id>COALESCE(r.last_message_id,0)) AS unread
         FROM complaints c JOIN users u ON u.id=c.user_id
         LEFT JOIN complaint_message_reads r ON r.complaint_id=c.id AND r.user_id=?
-        LEFT JOIN complaint_messages lm ON lm.id=(SELECT MAX(m.id) FROM complaint_messages m WHERE m.complaint_id=c.id)
+        LEFT JOIN (SELECT complaint_id,MAX(id) AS last_message_id FROM complaint_messages GROUP BY complaint_id) latest ON latest.complaint_id=c.id
+        LEFT JOIN complaint_messages lm ON lm.id=latest.last_message_id
         WHERE ' . $where;
     $filter = $unreadOnly ? ' WHERE inbox.unread>0' : '';
     $query = $pdo->prepare('SELECT COUNT(*) FROM (' . $base . ') inbox' . $filter); $query->execute($params);
