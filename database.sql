@@ -1,6 +1,4 @@
--- Create database if not exists
-CREATE DATABASE IF NOT EXISTS barangay_gis;
-USE barangay_gis;
+-- Select the target database before importing this schema.
 
 
 -- Users table (admins, staff, residents)

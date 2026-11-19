@@ -33,7 +33,7 @@ A web-based Geographic Information System (GIS) for managing and tracking commun
 2. **Create Database**
    - Start XAMPP (Apache and MySQL)
    - Open phpMyAdmin: http://localhost/phpmyadmin
-   - Import `database.sql` or run the SQL commands manually
+   - Select the `barangay_gis` database, then import `database.sql` or run the SQL commands manually
 
 3. **Configure Database**
    - Edit `config.php` if needed (default settings work with XAMPP)
@@ -57,7 +57,7 @@ A web-based Geographic Information System (GIS) for managing and tracking commun
 This project includes a Dockerfile and Render Blueprint (`render.yaml`). It runs as an Apache/PHP web service and needs a MySQL-compatible database reachable from Render. Render's managed database offering is PostgreSQL, so provision MySQL separately or deploy a MySQL service and configure its private connection details.
 
 1. Push this repository to GitHub and create a Render **Blueprint** from it.
-2. Provision a MySQL database reachable from the web service. Import `database.sql` into a new database named `barangay_gis` (or set `DB_NAME` to the database you created). Do not use your local XAMPP database address in Render.
+2. Provision one MySQL database reachable from the web service. Select that database and import `database.sql`. Set `DB_NAME` to the exact database name your provider created. Do not use your local XAMPP database address in Render.
 3. In the Render web service environment, set `DB_HOST`, `DB_USER`, and `DB_PASSWORD` to the database connection values. Set `APP_BASE_URL` to the deployed HTTPS URL. Add a Google Maps browser API key as `GOOGLE_MAPS_API_KEY` if map tiles/geocoding features require it, and restrict that key to your deployed domain.
 4. Set `DB_PORT` if the database provider uses a port other than `3306`. `DB_NAME` defaults to `barangay_gis`.
 5. Keep the Render disk mounted at `/var/www/html/storage`; uploads and saved mail settings are written there. The included Blueprint requests a persistent disk, which requires a Render plan that supports disks.
